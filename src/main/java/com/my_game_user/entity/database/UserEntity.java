@@ -2,6 +2,8 @@ package com.my_game_user.entity.database;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -15,7 +17,9 @@ public class UserEntity {
     private String name;
     private String password;
     private String role;
+    @CreationTimestamp
     private LocalDateTime createAt;
+    @UpdateTimestamp
     private LocalDateTime updateAt;
 
     public UserEntity() {
@@ -26,8 +30,6 @@ public class UserEntity {
         this.name = name;
         this.password = password;
         this.role = role;
-        this.createAt = LocalDateTime.now();
-        this.updateAt = LocalDateTime.now();
     }
 
     public UserEntity(int id, String name, String password, String role, LocalDateTime createAt,
@@ -92,5 +94,4 @@ public class UserEntity {
         this.updateAt = updateAt;
     }
 
-    
 }

@@ -20,33 +20,32 @@ public class JpaUserDao implements UserDao {
         return userEntity;
     }
 
-
-    public UserEntity getUserWithId(String id){
-        Optional<UserEntity> myUserEntity = userRepository.findById(Integer.valueOf(id));
+    public UserEntity getUserWithId(Integer id) {
+        Optional<UserEntity> myUserEntity = userRepository.findById(id);
 
         if (myUserEntity.isEmpty()) {
             return null;
-        }else{
+        } else {
             return myUserEntity.get();
         }
-    }    
-    
-    public Boolean isUserExist(String id){
-        Optional<UserEntity> myUserEntity = userRepository.findById(Integer.valueOf(id));
+    }
+
+    public Boolean isUserExist(Integer id) {
+        Optional<UserEntity> myUserEntity = userRepository.findById(id);
 
         if (myUserEntity.isEmpty()) {
             return false;
-        }else{
+        } else {
             return true;
         }
     };
 
-    public UserEntity deleteUser(String id){
-        Optional<UserEntity> myUserEntity = userRepository.findById(Integer.valueOf(id));
+    public UserEntity deleteUser(Integer id) {
+        Optional<UserEntity> myUserEntity = userRepository.findById(id);
 
         if (myUserEntity.isEmpty()) {
             return null;
-        }else{
+        } else {
             userRepository.delete(myUserEntity.get());
         }
 

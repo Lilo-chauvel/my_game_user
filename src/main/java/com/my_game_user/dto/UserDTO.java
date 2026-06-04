@@ -1,9 +1,7 @@
 package com.my_game_user.dto;
 
-import org.springframework.data.annotation.Id;
 
 public class UserDTO {
-    @Id
     private int id;
     private String name;
     private String password;
