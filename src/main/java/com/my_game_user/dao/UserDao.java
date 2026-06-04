@@ -2,15 +2,15 @@ package com.my_game_user.dao;
 
 import org.springframework.stereotype.Service;
 
-import com.my_game_user.entity.User;
+import com.my_game_user.entity.database.UserEntity;
 
 @Service
 public interface UserDao {
-    public User create(User user);
+    public UserEntity create(UserEntity userEntity);
 
-    public User getUserWithId(String id);
+    public UserEntity getUserWithId(String id);
 
     public Boolean isUserExist(String id);
 
-    public User deleteUser(String id);
+    public UserEntity deleteUser(String id);
 }

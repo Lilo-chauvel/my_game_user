@@ -2,7 +2,6 @@ package com.my_game_user.entity.database;
 
 import java.time.LocalDateTime;
 
-import com.my_game_user.entity.User;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -19,7 +18,7 @@ public class UserEntity {
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
 
-    protected UserEntity() {
+    public UserEntity() {
     }
 
     public UserEntity(int id, String name, String password, String role) {
@@ -69,7 +68,29 @@ public class UserEntity {
         return updateAt;
     }
 
-    public User toDomain() {
-        return new User(this.id, this.name, this.password, this.role, this.createAt, this.updateAt);
+    public void setId(int id) {
+        this.id = id;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setCreateAt(LocalDateTime createAt) {
+        this.createAt = createAt;
+    }
+
+    public void setUpdateAt(LocalDateTime updateAt) {
+        this.updateAt = updateAt;
+    }
+
+    
 }

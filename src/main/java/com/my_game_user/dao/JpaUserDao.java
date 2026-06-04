@@ -1,6 +1,5 @@
 package com.my_game_user.dao;
 
-import com.my_game_user.entity.User;
 import com.my_game_user.entity.database.UserEntity;
 import com.my_game_user.repository.UserRepository;
 
@@ -16,19 +15,19 @@ public class JpaUserDao implements UserDao {
         this.userRepository = userRepository;
     }
 
-    public User create(User user) {
-        userRepository.save(toEntity(user));
-        return user;
+    public UserEntity create(UserEntity userEntity) {
+        userRepository.save(userEntity);
+        return userEntity;
     }
 
 
-    public User getUserWithId(String id){
+    public UserEntity getUserWithId(String id){
         Optional<UserEntity> myUserEntity = userRepository.findById(Integer.valueOf(id));
 
         if (myUserEntity.isEmpty()) {
             return null;
         }else{
-            return toDomain(myUserEntity.get());
+            return myUserEntity.get();
         }
     }    
     
@@ -42,26 +41,15 @@ public class JpaUserDao implements UserDao {
         }
     };
 
-    public User deleteUser(String id){
+    public UserEntity deleteUser(String id){
         Optional<UserEntity> myUserEntity = userRepository.findById(Integer.valueOf(id));
 
         if (myUserEntity.isEmpty()) {
             return null;
         }else{
-            userRepository.delete(myUserEntity);
+            userRepository.delete(myUserEntity.get());
         }
-        
-        return toDomain(myUserEntity);
+
+        return myUserEntity.get();
     };
-
-
-    private UserEntity toEntity(User user) {
-        UserEntity myUser = new UserEntity(user.getId(), user.getName(), user.getPassword().toString(), user.getRole(),
-                user.getCreateAt(), user.getUpdateAt());
-        return myUser;
-    }
-
-    private User toDomain(UserEntity userEntity){
-        return new User(userEntity.getId(),userEntity.getName(),userEntity.getPassword(),userEntity.getRole());
-    }
 }

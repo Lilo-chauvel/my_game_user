@@ -2,8 +2,6 @@ package com.my_game_user.dto;
 
 import org.springframework.data.annotation.Id;
 
-import com.my_game_user.entity.User;
-
 public class UserDTO {
     @Id
     private int id;
@@ -32,9 +30,5 @@ public class UserDTO {
 
     public String getRole() {
         return role;
-    }
-
-    public User toUser() {
-        return new User(this.id, this.name, this.password, this.role);
     }
 }

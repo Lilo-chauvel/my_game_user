@@ -13,6 +13,9 @@ public class User {
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
 
+    public User() {
+    }
+
     public User(int id, String name, String password, String role) {
         this.id = id;
         this.name = name;
@@ -59,4 +62,27 @@ public class User {
         return updateAt;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setCreateAt(LocalDateTime createAt) {
+        this.createAt = createAt;
+    }
+
+    public void setUpdateAt(LocalDateTime updateAt) {
+        this.updateAt = updateAt;
+    }
 }
